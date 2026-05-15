@@ -7,34 +7,47 @@
 using namespace genv;
 using namespace std;
 
-void event_loop(vector<widget*>& widgetek)
-{
+void event_loop(vector<widget*>& widgetek) {
     event ev;
-        while (gin >> ev && ev.keycode != key_escape)
-        {
+    widget* focused_widget = nullptr;
 
-        if (ev.type == ev_key && ev.keycode == 's')
-        {
-            ofstream f("kimenet.txt");
-            for (widget* w : widgetek) f << w->ertek_kapas() << endl;
-            f.close();
+    while (gin >> ev && ev.keycode != key_escape) {
+
+        if (ev.type == ev_mouse && ev.button == btn_left) {
+
+            for (widget* w : widgetek) {
+
+                if (w->kivalasztva(ev.pos_x, ev.pos_y)) {
+
+                    if (focused_widget) focused_widget->set_focus(false);
+
+                    focused_widget = w;
+                    focused_widget->set_focus(true);
+                    w->event_kezeles(ev);
+                    break;
+                }
+            }
+            if (focused_widget && !focused_widget->kivalasztva(ev.pos_x, ev.pos_y)) {
+                focused_widget->set_focus(false);
+                focused_widget = nullptr;
+            }
+        }
+        else if (ev.type == ev_key) {
+            if (focused_widget) {
+                focused_widget->event_kezeles(ev);
+            }
         }
 
-        for (widget* w : widgetek)
-        {
-            w->event_kezeles(ev);
+        else {
+            if (focused_widget) {
+                focused_widget->event_kezeles(ev);
+            }
         }
-
 
         gout<< move_to(0,0)
             << color(0,0,0)
             << box(600, 400);
-
-        for (widget* w : widgetek)
-        {
-            w->rajzol();
-        }
-
+        for (widget* w : widgetek) w->rajzol();
         gout << refresh;
     }
 }
