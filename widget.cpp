@@ -2,7 +2,7 @@
 
 
 widget::widget(int x, int y, int sx, int sy):
-    _x(x), _y(y), _sx(sx), _sy(sy){}
+    _x(x), _y(y), _sx(sx), _sy(sy),_focus(false){}
 
     bool widget::kivalasztva(int mx, int my)
     {

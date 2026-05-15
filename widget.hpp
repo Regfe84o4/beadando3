@@ -6,6 +6,7 @@ class widget
 {
     protected:
     int _x,_y,_sx,_sy;
+    bool _focus;
 
     public:
         widget(int x,int y,int sx, int sy);
@@ -18,6 +19,10 @@ class widget
         virtual std::string ertek_kapas()=0;
 
         virtual bool kivalasztva(int mx, int my);
+
+        virtual void set_focus(bool focus){ _focus = focus; }
+
+        virtual bool get_focus() const{ return _focus; }
 };
 
 #endif // WIDGET_H

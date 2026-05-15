@@ -45,6 +45,8 @@ void szambeallitoB::rajzol()
     gout<< move_to(_x + _sx/2 - 10, _y - 5)
         << color(255,255,255)
         << text(ss.str());
+
+
 }
 
 void szambeallitoB::event_kezeles(event ev)

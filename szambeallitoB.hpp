@@ -14,6 +14,7 @@ class szambeallitoB : public widget
         void rajzol()override;
         void event_kezeles(genv::event) override;
         std::string ertek_kapas() override;
+        int get_ertek() const { return _aktualis; }
 
 
     private:
