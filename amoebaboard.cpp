@@ -2,9 +2,11 @@
 #include "graphics.hpp"
 using namespace genv;
 
-AmoebaBoard::AmoebaBoard(int x, int y, int sx, int sy, int rows, int cols):
-    widget(x, y, sx, sy), _rows(rows), _cols(cols)
+AmoebaBoard::AmoebaBoard(int x, int y, int sx, int sy, JatekMester* master):
+    widget(x, y, sx, sy), _master(master)
 {
+    _rows = _master->get_rows();
+    _cols = _master->get_cols();
     int cell_by_width = _sx / _cols;
     int cell_by_height = _sy / _rows;
     _cell_size = (cell_by_width < cell_by_height) ? cell_by_width : cell_by_height;

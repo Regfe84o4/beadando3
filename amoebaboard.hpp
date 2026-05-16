@@ -1,6 +1,7 @@
 #ifndef AMOEBABOARD_HPP
 #define AMOEBABOARD_HPP
 
+#include "jatekmester.hpp"
 #include "widget.hpp"
 #include <vector>
 
@@ -8,8 +9,9 @@ class AmoebaBoard : public widget {
 protected:
     int _rows, _cols;
     int _cell_size;
+    JatekMester* _master;
 public:
-    AmoebaBoard(int x, int y, int size_x, int size_y, int rows, int cols);
+    AmoebaBoard(int x, int y, int size_x, int size_y, JatekMester* master);
     virtual ~AmoebaBoard();
 
     void rajzol() override;
