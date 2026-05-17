@@ -51,7 +51,7 @@ void szambeallitoB::rajzol()
 
 void szambeallitoB::event_kezeles(event ev)
 {
-
+if (!_enabled) return;
 
     if (ev.type == ev_mouse)
         {
@@ -59,10 +59,12 @@ void szambeallitoB::event_kezeles(event ev)
         {
 
             if (ev.pos_x > _x && ev.pos_x < _x + _sy && ev.pos_y > _y && ev.pos_y < _y + _sy) {
+                _huzva = false;
                 if (_aktualis > _min) _aktualis--;
             }
 
             else if (ev.pos_x > _x + _sx - _sy && ev.pos_x < _x + _sx && ev.pos_y > _y && ev.pos_y < _y + _sy) {
+                _huzva = false;
                 if (_aktualis < _max) _aktualis++;
             }
 

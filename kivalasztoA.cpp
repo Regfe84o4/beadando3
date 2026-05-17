@@ -41,6 +41,7 @@ void kivalasztoA::rajzol()
 
 void kivalasztoA::event_kezeles(event ev)
 {
+    if (!_enabled) return;
     int lathato_db = _sy / _sor_magassag;
 
     if (ev.type == ev_mouse && ev.button == btn_left)

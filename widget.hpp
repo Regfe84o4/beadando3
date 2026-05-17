@@ -1,5 +1,5 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef WIDGET_HPP
+#define WIDGET_HPP
 #include "graphics.hpp"
 
 class widget
@@ -7,6 +7,7 @@ class widget
     protected:
     int _x,_y,_sx,_sy;
     bool _focus;
+    bool _enabled;
 
     public:
         widget(int x,int y,int sx, int sy);
@@ -23,6 +24,10 @@ class widget
         virtual void set_focus(bool focus){ _focus = focus; }
 
         virtual bool get_focus() const{ return _focus; }
+
+        virtual void set_enabled(bool enabled) { _enabled = enabled; }
+
+        virtual bool is_enabled() const { return _enabled; }
 };
 
-#endif // WIDGET_H
+#endif // WIDGET_HPP

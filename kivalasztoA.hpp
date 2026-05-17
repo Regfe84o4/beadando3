@@ -19,6 +19,7 @@ public:
     virtual void rajzol() override;
     virtual void event_kezeles(genv::event ev) override;
     virtual std::string ertek_kapas() override;
+    int get_kijelolt_index() const { return _kijelolt; }
 };
 
-#endif
+#endif //KIVALASZTOA_HPP
