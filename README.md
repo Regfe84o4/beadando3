@@ -1,1 +1,1 @@
-Az r gomb lenyomásával lehet ujjátékot kezdeni
+Az r gomb lenyomásával lehet új játékot kezdeni
